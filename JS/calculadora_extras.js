@@ -30,54 +30,45 @@ horas extras 100% * 2
     });
 })();
 
-
-
-
-
-
-
-
     function calcular() {
-        var salarioTotal = document.getElementById("idquestion1");
-        var jornadaDeTrabalho = document.getElementById("idquestion2");
-        var horasExtrasTotais = document.getElementById("idquestion3");
-        var domingosEFeriados = document.getElementById("idquestion4");
+        const salarioTotal = document.getElementById("idquestion1");
+        const jornadaDeTrabalho = document.getElementById("idquestion2");
+        const horasExtrasTotais = document.getElementById("idquestion3");
+        const domingosEFeriados = document.getElementById("idquestion4");
+        const resultadoFinal = document.getElementById("resultado");
 
+        if(!datosSonValidos(salarioTotal, jornadaDeTrabalho, horasExtrasTotais, domingosEFeriados)) {
+            alert("Se ha producido un error! :(");
+            return;
+        }
         
-    function calcularPrecoHora () {
-        var precoHora = salarioTotal / jornadaDeTrabalho;
-       return(precoHora); /*5,454545454545455‬ por hora*/ 
+        var precoHora = calcularPrecoHora(salarioTotal.value, jornadaDeTrabalho.value);
+        var horasExtra = calcularHorasExtras(horasExtrasTotais.value, domingosEFeriados.value, precoHora);
+        var horasExtraCem = calcularExtrasCem(domingosEFeriados.value, precoHora);
 
-   }
+        var resultado = parseFloat(salarioTotal.value) + horasExtra + horasExtraCem;
+        console.log(resultado);
+
+        resultadoFinal.innerHTML = "R$" + resultado.toFixed(2);
+    }
+        
+    function calcularPrecoHora (salarioTotal, jornadaDeTrabalho) {
+        return salarioTotal / jornadaDeTrabalho; /*5,454545454545455‬ por hora*/
+    }
    
 
-   /*Preço da hora extra 50% total trabalhada*/
+    /*Preço da hora extra 50% total trabalhada*/
 
-   function calcularHorasExtras () {
-       var calcularHorasCinquenta = horasExtrasTotais - domingosEFeriados;
-       var horasCinquenta = calcularHorasCinquenta * 1.5;
-       var totalCinquenta = horasCinquenta * calcularPrecoHora();
-       return totalCinquenta;
-       }
+    function calcularHorasExtras (horasExtrasTotais, domingosEFeriados, precoHora) {
+        return (horasExtrasTotais - domingosEFeriados) * 1.5 * precoHora;
+    }
 
-   /* Preço da hora domingo e feriado total */
+    /* Preço da hora domingo e feriado total */
 
-   function calcularExtrasCem () {
-       var horasCem =  domingosEFeriados * 2;
-       var totalCem = horasCem * calcularPrecoHora();
-       return totalCem;
-   }
-        
-        function calcularTotalExtras () {
-            var calcularTotal = calcularHorasExtras() + calcularExtrasCem();
-            return calcularTotal;
-        }
+    function calcularExtrasCem (domingosEFeriados, precoHora) {
+        return domingosEFeriados * 2 * precoHora;
+    }
 
-
-        function salarioComExtras () {
-            var calcularSalario = salarioTotal + calcularTotalExtras();
-            var resultadototal = document.getElementById("resultado").innerHTML = "R$" + calcularSalario.toFixed(2); 
-        }
-
-    return resultadototal;
+    function datosSonValidos(salarioTotal, jornadaDeTrabalho, horasExtrasTotais, domingosEFeriados) {
+        return true;
     }
