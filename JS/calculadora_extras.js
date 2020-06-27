@@ -36,6 +36,7 @@ horas extras 100% * 2
         const horasExtrasTotais = document.getElementById("idquestion3");
         const domingosEFeriados = document.getElementById("idquestion4");
         const resultadoFinal = document.getElementById("resultado");
+        const resultadoFinalExtra = document.getElementById("resultadoextra");
 
         if(!datosSonValidos(salarioTotal, jornadaDeTrabalho, horasExtrasTotais, domingosEFeriados)) {
             alert("Se ha producido un error! :(");
@@ -47,9 +48,13 @@ horas extras 100% * 2
         var horasExtraCem = calcularExtrasCem(domingosEFeriados.value, precoHora);
 
         var resultado = parseFloat(salarioTotal.value) + horasExtra + horasExtraCem;
+
+        var resultadoExtra = parseFloat(resultado - salarioTotal.value);
+
         console.log(resultado);
 
         resultadoFinal.innerHTML = "R$" + resultado.toFixed(2);
+        resultadoFinalExtra.innerHTML = "R$" + resultadoExtra.toFixed(2);
     }
         
     function calcularPrecoHora (salarioTotal, jornadaDeTrabalho) {
@@ -72,3 +77,4 @@ horas extras 100% * 2
     function datosSonValidos(salarioTotal, jornadaDeTrabalho, horasExtrasTotais, domingosEFeriados) {
         return true;
     }
+

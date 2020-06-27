@@ -6,7 +6,7 @@
 
 @media (max-width: 800px) {
   h3 {
-    font-size: 25px;
+    font-size: 20px;
   }
   .divprincipal {
     background-color: #F5EEFA;
@@ -126,8 +126,8 @@
     font-size: 12px;
     color: #F5EEFA;
   }
-  .divresultado .resultado {
-    font-size: 25px;
+  .divresultado #resultado, .divresultado #resultadoextra {
+    font-size: 20px;
   }
   .divresultado h3, .divresultado p, .divresultado span {
     margin-left: 5vw;
@@ -164,7 +164,7 @@
 
 @media (min-width: 801px) {
   h3 {
-    font-size: 25px;
+    font-size: 20px;
   }
   .divprincipal {
     background-color: #F5EEFA;
@@ -281,7 +281,7 @@
     background-color: #8224E3;
     color: #fff;
     width: 95%;
-    height: 200px;
+    height: 250px;
     margin-left: 3vw;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -299,8 +299,8 @@
     font-size: 12px;
     color: #F5EEFA;
   }
-  .divresultado .resultado {
-    font-size: 25px;
+  .divresultado #resultado, .divresultado #resultadoextra {
+    font-size: 20px;
   }
   .divresultado h3, .divresultado p, .divresultado span {
     margin-left: 5vw;
